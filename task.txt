@@ -1,0 +1,3 @@
+find email start with specfic char
+find employee who is having heighest salry
+find employee who is having lowest salry
