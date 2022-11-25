@@ -1,8 +1,14 @@
 const express = require('express');
 const app = express();
-
+const mongoose = require('mongoose');
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+const userSchema = require('./model/UserSchema')
+
+const user = require('./router/userRouter');
+app.use('/user',user);
+
+
 //create server using express
 
 var search = require('./search');
@@ -12,90 +18,21 @@ app.listen(PORT,()=>{
     console.log(`Server is running on port ${PORT}`)
 })
 
-app.get('/user',(req,res)=>{
-
-    //res.send("Hello World")
-    //res.status(200).send("Hello World")
-    res.json({
-        message:"Hello World"
-    })
-})
-app.post('/user',(req,res)=>{
-
-
-    res.send("data added...")
-    console.log(req.body.name)
-})
-app.delete('/user/:id',(req,res)=>{
-
-
-    //id url -->
-    var id= req.params.id
-    try{
-        if(id==1){
-
-            throw new Error("id is not valid...")
-        }
-        else{
-            res.status(204).send()
-        }
-
-    }catch(err){
-
-        res.status(400).send(err.message)
+//db connection
+mongoose.connect("mongodb://localhost:27017/club2",{
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    socketTimeoutMS: 30000,
+    keepAlive: true,
+},(err)=>{
+    if(err){
+        console.log(err)
     }
-
-
-})
-
-app.put('/user/:id',(req,res)=>{
-
-
-    var id = req.params.id
-    var user = req.body
-
-    res.json({
-        id:id,
-        message:"data updated...",
-        data:user
-    })
-
-})
-
-app.get('/user/:id',(req,res)=>{
-
-
-    res.send(req.params.id)
-
-})
-
-
-app.get('/usersearch/:name',(req,res)=>{
-
-
-    var filteredData = search.searchByName(req.params.name)
-    try{
-
-            if(filteredData.length==0){
-                    
-                    throw new Error("No data found...")
-            }
-            else{
-                res.json({
-                    message:"data found...",
-                    data:filteredData
-                })
-            }
-
-    }catch(err){
-
-        res.status(400).send(err.message)
+    else{
+        console.log("Connected to DB")
     }
+}
+);
 
-
-
-
-
-})
 
 
