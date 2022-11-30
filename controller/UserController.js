@@ -80,3 +80,24 @@ module.exports.delteUser = (req,res)=>{
     })
 }
 
+module.exports.updateUser = (req,res)=>{
+    console.log("-------",req.params.id)    
+        const id = req.params.id;
+    userSchema.findByIdAndUpdate(id,req.body,(err,data)=>{
+
+        if(err){
+            res.status(404).json({
+                message:"User not found with id "+id
+
+            })
+        }
+        else{
+            res.status(200).json({
+                message:"User updated successfully",
+                data:data
+            })
+        }
+
+    })
+}
+

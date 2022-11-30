@@ -6,4 +6,5 @@ Router.post('/user',userController.addUser)
 Router.get('/user',userController.getAllRecord)
 Router.get('/user/:id',userController.getRecordById)
 Router.delete('/user/:id',userController.delteUser)
+Router.put('/user/:id',userController.updateUser)
 module.exports = Router;

@@ -6,7 +6,11 @@ app.use(express.urlencoded({ extended: true }));
 const userSchema = require('./model/UserSchema')
 
 const user = require('./router/userRouter');
+const department  = require('./router/DepartmentRoutes');
+const employee = require('./router/EmployeeRoutes');
 app.use('/user',user);
+app.use('/department',department);
+app.use('/employee',employee);
 
 
 //create server using express
