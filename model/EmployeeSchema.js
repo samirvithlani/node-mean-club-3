@@ -19,10 +19,10 @@ const employeeSchema = Schema({
         type:Number,
         required:true,
     },
-    department:{
+    department:[{
         type:Schema.Types.ObjectId,
         ref:'Department',
         required:true,
-    },
+    }],
 })
 module.exports = mongoose.model('Employee',employeeSchema)
