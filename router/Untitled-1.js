@@ -1,12 +1,12 @@
 const { db } = require("../../../model/UserSchema")
 
-find all user who is married and have a child
-findone  user having heighest saalry
-findone  user having heighest saalry and married
-provide array of user name and remove matching user name
-findone one user having heighest saalry and married and having child
-find user who is having lowest salary and not married
-find oldest user who is not married
+// find all user who is married and have a child
+// findone  user having heighest saalry
+// findone  user having heighest saalry and married
+// provide array of user name and remove matching user name
+// findone one user having heighest saalry and married and having child
+// find user who is having lowest salary and not married
+// find oldest user who is not married
 
 
 
