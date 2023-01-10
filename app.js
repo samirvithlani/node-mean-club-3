@@ -7,6 +7,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
+require('dotenv').config();
 const userSchema = require('./model/UserSchema')
 
 const user = require('./router/userRouter');
@@ -23,7 +24,8 @@ app.use('/upload',upload);
 
 var search = require('./search');
 
-const PORT = 3000
+const PORT = process.env.PORT 
+
 app.listen(PORT,()=>{
     console.log(`Server is running on port ${PORT}`)
 })
