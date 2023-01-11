@@ -31,7 +31,7 @@ app.listen(PORT,()=>{
 })
 
 //db connection
-mongoose.connect("mongodb://127.0.0.1:27017/club2",{
+mongoose.connect("mongodb+srv://samir:sam123@cluster0.key63fx.mongodb.net/?retryWrites=true&w=majority",{
     useNewUrlParser: true,
     useUnifiedTopology: true,
     socketTimeoutMS: 30000,
