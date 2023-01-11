@@ -10,11 +10,11 @@ app.use(cors());
 require('dotenv').config();
 const userSchema = require('./model/UserSchema')
 
-const user = require('./router/userRouter');
+// const user = require('./router/userRouter');
 const department  = require('./router/DepartmentRoutes');
 const employee = require('./router/EmployeeRoutes');
 const upload = require('./router/UploadRoutes');
-app.use('/user',user);
+// app.use('/user',user);
 app.use('/department',department);
 app.use('/employee',employee);
 app.use('/upload',upload);
