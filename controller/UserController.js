@@ -1,5 +1,6 @@
 const { model } = require("mongoose");
 const userSchema = require("../model/UserSchema");
+const mailer = require("../util/mailer");
 
 exports.addUser = (req, res) => {
   const user = new userSchema(req.body);
@@ -9,6 +10,15 @@ exports.addUser = (req, res) => {
         message: err.message || "Some error occured while creating a user",
       });
     } else {
+      mailer
+        .sendMail(data.email)
+        .then((info) => {
+          console.log("info", info);
+        })
+        .catch((err) => {
+          console.log("err", err);
+        });
+
       res.status(200).json({
         message: "User created successfully",
         data: data,
@@ -118,11 +128,8 @@ module.exports.LoginUser = (req, res) => {
     });
   }
 };
-module.exports.getRecordByEmail = (req,res)=>{
-
-        const email = req.headers.email;
-        console.log("email",email)
-        res.send("ok")
-
-
-}
+module.exports.getRecordByEmail = (req, res) => {
+  const email = req.headers.email;
+  console.log("email", email);
+  res.send("ok");
+};
